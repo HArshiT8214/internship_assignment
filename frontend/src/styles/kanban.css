@@ -1,0 +1,332 @@
+/* Kanban Board Layout */
+.kanban-board {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+  min-height: 80vh;
+  background: #f7fafc;
+}
+
+.kanban-column {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 1.2rem 1rem 1.5rem 1rem;
+  min-width: 290px;
+  max-width: 320px;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.kanban-column h3 {
+  margin-bottom: 1rem;
+  color: #2b6cb0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.kanban-tasks {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.task-card {
+  background: #edf2f7;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  padding: 1rem 1rem 0.7rem 1rem;
+  transition: box-shadow 0.2s, transform 0.1s, background 0.2s;
+  cursor: grab;
+  user-select: none;
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 16px rgba(49,130,206,0.13);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.task-card:active {
+  background: #cfe2ff;
+  transform: scale(1.03);
+}
+
+.task-title {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.3rem;
+}
+
+.task-desc {
+  font-size: 0.97rem;
+  color: #4a5568;
+  margin-bottom: 0.7rem;
+}
+
+.task-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.93rem;
+}
+
+.task-user {
+  color: #3182ce;
+  font-weight: 500;
+}
+
+.task-priority {
+  padding: 0.2rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  background: #e2e8f0;
+  color: #2d3748;
+}
+.priority-high {
+  background: #feb2b2;
+  color: #c53030;
+}
+.priority-medium {
+  background: #faf089;
+  color: #b7791f;
+}
+.priority-low {
+  background: #c6f6d5;
+  color: #276749;
+}
+
+@media (max-width: 900px) {
+  .kanban-board {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+  .kanban-column {
+    max-width: 100vw;
+    min-width: 0;
+  }
+}
+
+.conflict-modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.conflict-modal {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+  padding: 2rem 2.5rem;
+  max-width: 600px;
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.conflict-modal h2 {
+  color: #c53030;
+  margin-bottom: 0.7rem;
+}
+.conflict-versions {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  width: 100%;
+  justify-content: space-between;
+}
+.conflict-versions > div {
+  flex: 1;
+  background: #f7fafc;
+  border-radius: 8px;
+  padding: 0.7rem;
+  font-size: 0.95rem;
+  overflow-x: auto;
+}
+.conflict-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.conflict-actions button {
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #3182ce;
+  color: #fff;
+  transition: background 0.2s;
+}
+.conflict-actions button:hover {
+  background: #2563eb;
+}
+
+.kanban-column.drag-over {
+  background: #e3f2fd;
+  box-shadow: 0 0 0 3px #90cdf4;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.activity-log-panel {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 1.2rem 1rem 1.5rem 1rem;
+  min-width: 290px;
+  max-width: 320px;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.activity-log-panel h3 {
+  margin-bottom: 1rem;
+  color: #2b6cb0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.activity-log-list {
+  width: 100%;
+  overflow-y: auto;
+  max-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.activity-log-entry {
+  background: #f7fafc;
+  border-radius: 7px;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.97rem;
+  color: #2d3748;
+  box-shadow: 0 1px 4px rgba(49,130,206,0.04);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 1;
+  transform: translateX(0);
+  transition: background 0.2s;
+}
+.activity-log-entry.animate {
+  animation: slideIn 0.5s cubic-bezier(0.4,0.2,0.2,1);
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.log-user {
+  color: #3182ce;
+  font-weight: 600;
+}
+.log-action {
+  color: #b7791f;
+  font-weight: 500;
+}
+.log-task {
+  color: #2b6cb0;
+  font-weight: 600;
+}
+.log-time {
+  margin-left: auto;
+  color: #718096;
+  font-size: 0.92rem;
+}
+@media (max-width: 900px) {
+  .activity-log-panel {
+    position: static;
+    width: 100%;
+    max-width: 100vw;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.09);
+  }
+}
+
+.add-task-form {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+  background: #fff;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(49,130,206,0.07);
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.add-task-form input,
+.add-task-form select {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font-size: 1rem;
+  outline: none;
+  min-width: 120px;
+}
+.add-task-form button {
+  padding: 0.5rem 1.1rem;
+  background: #3182ce;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.add-task-form button:hover {
+  background: #2563eb;
+}
+.form-error {
+  color: #e53e3e;
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.97rem;
+  margin-left: 0.5rem;
+} 
+.footer{
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  padding: 8px;
+}
+.loginButton{
+  padding: 4px;
+  margin: 2px;
+  border: 2px solid black;
+  font-size: 1.2rem;
+  border-radius: 14px;
+  background: #fff;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.registerButton{
+  padding: 4px;
+  margin: 2px;
+  border: 2px solid black;
+  font-size: 1.2rem;
+  border-radius: 14px;
+  background: #fff;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
