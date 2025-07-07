@@ -19,11 +19,13 @@ function Layout() {
         </div>
       </div>
       <div className='footer'>
-        <div className="loginButton">
-          <Link to="/login">Go to Login Page</Link>
-        </div>
-        <div className="registerButton">
-          <Link to="/register">Go to Register Page</Link>
+        <div className="auth-buttons-container">
+          <Link to="/login" className="auth-link">
+            <button className="auth-button">Login</button>
+          </Link>
+          <Link to="/register" className="auth-link">
+            <button className="auth-button">Register</button>
+          </Link>
         </div>
       </div>
     </div>

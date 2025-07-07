@@ -310,23 +310,36 @@
   gap: 4rem;
   padding: 8px;
 }
-.loginButton{
-  padding: 4px;
-  margin: 2px;
-  border: 2px solid black;
-  font-size: 1.2rem;
-  border-radius: 14px;
-  background: #fff;
-  font-weight: 700;
-  letter-spacing: 1px;
+
+
+
+/* AuthButtons.css */
+
+.auth-buttons-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
-.registerButton{
-  padding: 4px;
-  margin: 2px;
-  border: 2px solid black;
-  font-size: 1.2rem;
-  border-radius: 14px;
-  background: #fff;
-  font-weight: 700;
-  letter-spacing: 1px;
+
+.auth-link {
+  text-decoration: none;
+}
+
+.auth-button {
+  background: linear-gradient(135deg, #4a90e2, #357ABD);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
